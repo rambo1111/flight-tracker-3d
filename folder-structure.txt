@@ -1,0 +1,37 @@
+🗂️ flight-tracker-3d/
+├──  📄 README.md
+├──  📄 index.html
+├──  📄 package.json
+├──  📄 postcss.config.js
+├──  📁 public
+│   ├──  📁 textures
+│   │   ├──  📄 .gitkeep
+├──  📁 src
+│   ├──  📄 App.jsx
+│   ├──  📁 api
+│   │   ├──  📄 opensky.js
+│   ├──  📁 components
+│   │   ├──  📁 canvas
+│   │   │   ├──  📄 Earth.jsx
+│   │   │   ├──  📄 Planes.jsx
+│   │   │   ├──  📄 Scene.jsx
+│   │   ├──  📁 ui
+│   │   │   ├──  📄 AltitudeLegend.jsx
+│   │   │   ├──  📄 ControlsHint.jsx
+│   │   │   ├──  📄 Header.jsx
+│   │   │   ├──  📄 InfoCard.jsx
+│   │   │   ├──  📄 LoadingOverlay.jsx
+│   │   │   ├──  📄 SearchFilter.jsx
+│   │   │   └──  📄 StatsBar.jsx
+│   ├──  📁 hooks
+│   │   ├──  📄 useFlightData.js
+│   ├──  📄 main.jsx
+│   ├──  📁 store
+│   │   ├──  📄 flightStore.js
+│   ├──  📁 styles
+│   │   ├──  📄 index.css
+│   └──  📁 utils
+│       ├──  📄 colors.js
+│       └──  📄 geo.js
+├──  📄 tailwind.config.js
+└──  📄 vite.config.js

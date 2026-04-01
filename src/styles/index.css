@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ─────────────────────────────────────── */
+:root {
+  --bg:           #08080F;
+  --surface:      rgba(8, 8, 15, 0.88);
+  --surface-2:    rgba(14, 14, 26, 0.94);
+  --border:       rgba(255, 255, 255, 0.55);
+  --border-dim:   rgba(255, 255, 255, 0.18);
+  --accent:       #FFE500;
+  --accent-dim:   rgba(255, 229, 0, 0.15);
+  --text:         #ffffff;
+  --text-muted:   rgba(255, 255, 255, 0.42);
+  --text-faint:   rgba(255, 255, 255, 0.22);
+  --neo-shadow:   3px 3px 0px rgba(255, 255, 255, 0.16);
+  --neo-shadow-accent: 3px 3px 0px #FFE500;
+  --alt-low:    #00FF88;
+  --alt-mid:    #FFE500;
+  --alt-high:   #FF6B35;
+  --alt-cruise: #80CFFF;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Mono', 'Courier New', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Neobrutalist Panel Components ─────────────────────── */
+@layer components {
+  /* Default panel: dark bg, white border, hard shadow */
+  .neo-panel {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    box-shadow: var(--neo-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Accent panel: yellow border, yellow shadow */
+  .neo-panel-accent {
+    background: var(--surface-2);
+    border: 2px solid var(--accent);
+    box-shadow: var(--neo-shadow-accent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Faint panel: very subtle border */
+  .neo-panel-dim {
+    background: var(--surface);
+    border: 1px solid var(--border-dim);
+    box-shadow: 2px 2px 0px rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Label utility */
+  .label {
+    @apply text-[9px] tracking-[0.18em] uppercase;
+    color: var(--text-faint);
+  }
+
+  /* Value utility */
+  .value {
+    @apply text-[11px] font-bold tracking-wide;
+    color: var(--text);
+  }
+
+  /* Divider */
+  .neo-divider {
+    border: none;
+    border-top: 1px solid var(--border-dim);
+  }
+
+  /* Input */
+  .neo-input {
+    background: transparent;
+    border: 1px solid var(--border-dim);
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .neo-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .neo-input::placeholder {
+    color: var(--text-faint);
+  }
+
+  /* Pill badge */
+  .neo-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5;
+    @apply text-[9px] font-bold tracking-widest uppercase;
+    border: 1px solid currentColor;
+  }
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-dim);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border);
+}
+
+/* ── Canvas cursor ─────────────────────────────────────── */
+canvas {
+  cursor: grab;
+}
+canvas:active {
+  cursor: grabbing;
+}
+
+/* ── Utility: scanline overlay ─────────────────────────── */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  pointer-events: none;
+}
